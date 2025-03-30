@@ -131,13 +131,16 @@ export const RESET_SUCCESS_TEMP = `
   </head>
   <body style = "font-family: Poppins, sans-serif; margin: 0, auto; max-width: 600px; padding: 20px; color: #333;">
     <div style="text-align: center; padding: 20px; margin: auto; background-color: #000080; width: 90%; " >
-      <h1 style="color: #fff; margin: auto;">Password reset successful!</h1>
+      <h3 style="color: #fff; margin: auto;">Password reset successful!</h3>
     </div>
     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 5px 5px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
       <p>Hello,</p>
       <p>We are writing to confirm that your password has been successfully reset</p>
       
-      <div style="text-align: center; margin: auto; padding: 20px; background-color: #000080; border-radius: 50%; display: flex; justify-content: center;"><span style="color: #fff; font-size: 25px; font-weight: bold;">✓</span>
+      <div style="text-align: center; margin: auto; display: flex; justify-content: center; align-item: center;">
+        <span style="color: #fff; font-size: 25px; font-weight: bold; border-radius: 50%; display: flex; justify-content: center; align-item: center; padding: 20px; background-color: #000080;">
+          ✓
+        </span>
       </div>
      
       <p>If you did not initiate this password reset, please contact our support team immediately.</p>

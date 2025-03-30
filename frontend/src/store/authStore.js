@@ -104,11 +104,11 @@ export const useAuthStore = create((set) => ({
   
   
 
-  updateUser: async(userId, username, dob, phoneNo, address, occupation, statu, gender)=>{
+  updateUser: async(userId, data)=>{
     
     set({ isLoading: true, error: null })
     try {
-      const response = await axios.put(`${API_URL}/edit-user/${userId}`, { username, dob, phoneNo, address, occupation, statu })
+      const response = await axios.put(`${API_URL}/edit-user/${userId}`, { ...data })
       set({ user: response.data.user, isLoading: false })
     } catch (error) {
       set({ error: error.response.data.message || "Error updating profile", isLoading: false })
@@ -135,7 +135,7 @@ export const useAuthStore = create((set) => ({
   
   
   resetPassword: async(token, password) =>{
-    set({ isLoading: true, error: null, })
+    set({ isLoading: true, error: null })
     try {
       
       const response = await axios.post(`${API_URL}/reset-password/${token}`, { password })
@@ -155,6 +155,24 @@ export const useAuthStore = create((set) => ({
     } catch (error) {
       set({ error: error.response.data.message || "Error deleting user", isLoading: false })
     
+    }
+    
+  },
+  
+  changePassword: async(oldPassword, newPassword, userId) =>{
+    set({ isLoading: true, error: null})
+    
+    try{
+      
+      const response = await axios.post(`${API_URL}/change-password/${userId}`, { oldPassword, newPassword })
+      
+      set({ message: response.data.message, isLoading: false, error: null})
+      
+    } catch (error) {
+      
+      set({ error: error.response.data.message || "Error reseting password", isLoading: false, message: null })
+      throw error
+      
     }
     
   }

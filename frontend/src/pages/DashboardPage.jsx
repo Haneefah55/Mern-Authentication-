@@ -14,6 +14,7 @@ const DashboardPage = () =>{
   const [isVisible, setIsVisible] = useState(false)
   const link = "flex gap-3 items-center text-purple-800 bg-fuchsia-100 p-4 "
   const name = user.username
+  const pics = user.profilePic
   const navigate = useNavigate()
   
   const handleVisibility = () =>{
@@ -125,7 +126,7 @@ const DashboardPage = () =>{
               return isActive ? { backgroundColor: "plum" } : {}
             }}
           >
-            <img src={profileImage} className="size-6" />
+            <img src={pics ? pics : profileImage} className="size-8 rounded-full object-cover border-2 border-purple-600" />
             <div className={` text-md flex-col md:flex  ${isVisible ? "flex" : "hidden"} `}>
               <h4>{name}</h4>
               <p className="hover:underline text-xs text-gray-800">

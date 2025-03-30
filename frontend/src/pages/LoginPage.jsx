@@ -1,6 +1,6 @@
 import { motion } from "motion/react"
 import { useState } from 'react'
-import { Mail, Lock, Loader } from "lucide-react"
+import { Mail, Lock, Loader, Eye, EyeOff } from "lucide-react"
 import Input from "../components/Input"
 import { Link } from 'react-router'
 import { useAuthStore } from "../store/authStore.js"
@@ -10,9 +10,16 @@ const LoginPage = () =>{
   const { login, isLoading, error } = useAuthStore()
   
   const navigate = useNavigate()
-  
+  const [isVisible, setIsVisible] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  
+  
+  const handleToggle = () =>{
+    
+    setIsVisible(!isVisible)
+  }
+  
   
   const handleLogin = async(e) =>{
     e.preventDefault()
@@ -21,6 +28,7 @@ const LoginPage = () =>{
     navigate("/account")
     
   }
+
   
   
   return(
@@ -47,15 +55,29 @@ const LoginPage = () =>{
             onChange={(e) => (setEmail(e.target.value))}
           
           />
-                      
-          <Input
-            icon={Lock}
-            type={"password"}
-            placeholder={"Enter your password"}
-            value={password}
-            onChange={(e) => (setPassword(e.target.value))}
           
-          />
+          <div className="relative mb-4">
+            <div className=" absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none ">
+              <Lock className="size-5 text-fuchsia-400" />
+            </div>
+            <input
+              type={!isVisible ? "password" : "text" }
+              placeholder={"Enter your password"}
+              value={password}
+              onChange={(e) => (setPassword(e.target.value))}
+              className="w-full pr-3 py-2 pl-10 bg-gray-200 bg-opacity-50 rounded-lg border-2 border-fuchsia-400 outline-none focus:border-fuchsia-600 text-gray-900 placeholder:text-gray-900 transition duration-200"
+            />
+            <div 
+              className=" absolute inset-y-0 right-0 flex items-center outline-none border-none pr-3 "
+              onClick={handleToggle}
+            >
+              {!isVisible ? <EyeOff className="size-5 text-fuchsia-400" /> : <Eye className="size-5 text-fuchsia-400" /> }
+            
+            </div>
+    
+          </div>
+                      
+          
           <div className="flex text-xs text-gray-500  items-center justify-center">
             <Link to={"/forgot-password"} >Forgot password?</Link>
           </div>
@@ -67,6 +89,7 @@ const LoginPage = () =>{
             whileTap={{ scale: 0.92 }}
             type= "submit"
             disabled={isLoading}
+            onClick={handleLogin}
         
           > 
             { isLoading ? <Loader className=" animate-spin mx-auto" size={24} /> : "Login"}

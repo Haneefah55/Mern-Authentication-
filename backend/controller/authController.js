@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import bcrypt from 'bcryptjs'
 import crypto from 'crypto'
-
+import cloudinary from "../utils/cloudinary.js"
 import { User } from "../model/userModel.js"
 import generateTokenAndSetCookie from "../utils/generateToken.js"
 import { sendVerificationEmail, sendWelcomeEmail, sendPasswordResetEmail, sendResetSuccessEmail } from "../mailtrap/email.js"
@@ -198,6 +198,7 @@ export const forgetPassword = asyncHandler(async (req, res) =>{
     user.resetPasswordToken = resetToken
     user.resetPasswordExpiresAt = resetTokenExpiredAt
     
+    
     await user.save()
     
     await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`)
@@ -272,21 +273,26 @@ export const checkAuth = asyncHandler(async (req, res) =>{
 
 export const updateUser = asyncHandler(async (req, res) =>{
   const { id } = req.params
-  const data = {
-    username: req.body.username,
-    dateOfBirth: req.body.dob,
-    phoneNo: req.body.phoneNo,
-    address: req.body.address,
-    occupation: req.body.occupation,
-    status: req.body.statu,
-    gender: req.body.gender
-  }
-  
-  
   
   try{
+    const profilePic = req.body.profilePic
     
-    const user = await User.findByIdAndUpdate( id, { ...data }, { new: true })
+    const uploadResponse = await cloudinary.uploader.upload(profilePic)
+    const picUrl = uploadResponse.secure_url
+    const user = await User.findById(id)
+    if(!user){
+      return res.status(400).json({success: false, message: "User not found"})
+    }
+    
+    user.username = req.body.username
+    user.dateOfBirth = req.body.dob
+    user.address = req.body.address
+    user.relationship = req.body.statu
+    user.occupation = req.body.occupation
+    user.phoneNo = req.body.phoneNo
+    user.gender = req.body.gender
+    user.profilePic = picUrl
+  
     await user.save()
     
     

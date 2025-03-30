@@ -89,8 +89,8 @@ export const sendResetSuccessEmail = async (email) =>{
   const resetSuccess = {
   from: sender,
   to: email,
-  subject: "Password reset",
-  html: PASSWORD_RESET_REQUEST_TEMP.replace("{resetUrl}", resetUrl),
+  subject: "Password Reset Successful ",
+  html: RESET_SUCCESS_TEMP,
   };
 
   transporter.sendMail(resetSuccess, function(error, info){
@@ -102,4 +102,4 @@ export const sendResetSuccessEmail = async (email) =>{
   });
   
   
-}
+} 

@@ -17,10 +17,14 @@ const userSchema = new mongoose.Schema({
   },
   dateOfBirth: Date,
   address: String,
-  status: String,
+  relationship: String,
   occupation: String,
   phoneNo: String,
   gender: String,
+  profilePic: {
+    type: String,
+    default: ""
+  },
   lastLogin: {
     type: Date,
     default: Date.now

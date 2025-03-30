@@ -46,7 +46,9 @@ const Settings = ({ ...user }) =>{
         
         <div className="p-2 mb-3 text-xl">
           
-          <Link to="/account/change-password" className="hover:text-fuchsia-300 text-purple-800 block font-semibold" >Change password
+          <Link to= "/change-password" className="hover:text-fuchsia-300 text-purple-800 block font-semibold"
+          >
+            Change password
           </Link>
           <button 
             className="hover:text-fuchsia-300 text-purple-800 bg-transparent outline-none block font-semibold" 

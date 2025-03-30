@@ -11,6 +11,7 @@ const Profile = () =>{
   const { user } = useAuthStore()
   
   const userId = user._id
+  const userPics = user.profilePic
   const date = new Date()
   const currentDob  = new Date(user.dateOfBirth)
   
@@ -21,10 +22,10 @@ const Profile = () =>{
   const phoneNo = user.phoneNo
   const address = user.address
   const occupation = user.occupation
-  const letter = user.username.charAt(0)
+
   
-  
-  const status = user.status
+  const gender = user.gender
+  const status = user.relationship
   
   
   
@@ -47,9 +48,9 @@ const Profile = () =>{
         
       </h2> 
       <div className="flex flex-col items-center justify-center">
-        <div className="size-20 text-4xl flex bg-purple-800 p-4 items-center text-fuchsia-200 justify-center rounded-full border-2 border-fuchsia-200">
-          {letter}
-        </div>
+        <img className="size-20 rounded-full border-2 border-fuchsia-200"
+          src={userPics ? userPics : profileImage}
+        />
         
         
         
@@ -61,6 +62,7 @@ const Profile = () =>{
           <p>Address: {address} </p>
           <p>Occupation: {occupation} </p>
           <p>Marital status: {status}</p>
+          <p>Gender: {gender}</p>
           <p>Mobile number: {phoneNo}</p>
           
         </div>

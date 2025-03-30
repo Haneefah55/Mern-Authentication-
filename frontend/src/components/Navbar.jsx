@@ -1,5 +1,6 @@
 import { Link } from "react-router"
 import { Menu, X, CircleUserRound } from "lucide-react"
+import profileImage from "../assets/profile.png"
 import { useState } from 'react'
 import logo from '../assets/logoo.png'
 
@@ -21,7 +22,7 @@ const Navbar = ({ ...user }) =>{
     setDropStyle("hidden")
   }
   const name = user.username
-  
+  const pics = user.profilePic
   
   return (
     <div className="fixed top-0 left-0 right-0 bg-fuchsia-100 shadow-lg flex items-center justify-around px-5 py-4 z-50">
@@ -53,8 +54,10 @@ const Navbar = ({ ...user }) =>{
       </div>
     
       <Link to="/account" className=" flex items-center gap-2">
+        
        
-        <CircleUserRound className=" font-bold text-fuchsia-800"/>
+        <img src={pics ? pics : profileImage} className="size-8 rounded-full object-cover border-2 border-purple-600" 
+        />
         
 
         <span>

@@ -37,6 +37,7 @@ import EditProfilePage from "./pages/EditProfilePage"
 
 
 
+
 const ProtectedRoutes = ({ children }) =>{
   const { isAuthenticated, user } = useAuthStore()
   
@@ -64,6 +65,8 @@ const RedirectAuthenticatedUser = ({ children }) =>{
 }
 
 
+
+
 const App = () =>{
   
 
@@ -72,6 +75,7 @@ const App = () =>{
   
  
    
+ 
   useEffect(() =>{
     checkAuth()
   }, [checkAuth])
@@ -80,7 +84,7 @@ const App = () =>{
   
   return(
     
-    <div className=" min-h-screen relative overflow-auto bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 flex items-center justify-center font-[Outfit]">
+    <div className=" min-h-screen relative overflow-y-scroll bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 flex items-center justify-center font-[Outfit]">
       
 
       
@@ -117,15 +121,14 @@ const App = () =>{
 
           <Route path="profile" element={<Profile />} 
           />
-          <Route path="change-password" element={<ChangePassword />} 
-          />
+        
           
           <Route path="destination" element={<Destination />} />
           <Route path="bookings" element={<Bookings />} />
           <Route path="notifications" element={<Notifications />} />
           
-          <Route path="settings" element={<Settings { ...user } />} />
-          
+          <Route path="settings" element={<Settings { ...user } />} /> 
+         
 
         </Route>
               
@@ -162,11 +165,7 @@ const App = () =>{
         />
 
         <Route path="/edit-user" element={
-      
-       
-          <ProtectedRoutes>
-            <EditProfilePage {...user} />
-          </ProtectedRoutes>
+          <EditProfilePage {...user} />
         }
         />
         
@@ -176,9 +175,17 @@ const App = () =>{
             </RedirectAuthenticatedUser>
           
         } 
+        /> 
+        
+        <Route path="/change-password" element={
+          <ChangePassword { ...user } />
+        } 
         />
         <Route path="/*" element={<NotFoundPage />}
         />
+        
+        
+          
 
       </Routes>
       <Toaster />
