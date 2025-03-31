@@ -315,7 +315,7 @@ export const deleteUser = asyncHandler(async (req, res) =>{
   
   try{
     const { id } = req.params
-    console.log(id)
+    
     await User.findByIdAndDelete(id)
   
   
