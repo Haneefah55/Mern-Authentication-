@@ -199,7 +199,7 @@ export const forgetPassword = asyncHandler(async (req, res) =>{
     
     await user.save()
     
-    await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`)
+    await sendPasswordResetEmail(user.email, `${process.env.DOMAIN_URL}/reset-password/${resetToken}`)
     
     res.status(200).json({
       success: true,

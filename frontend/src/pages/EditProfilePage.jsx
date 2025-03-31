@@ -64,13 +64,16 @@ const EditProfilePage = ({ ...user }) =>{
       return 
       
     }
-    await updateUser(userId, data)
-    history.back()
-    toast.success("Profile updated successfully ")
+    try {
+      await updateUser(userId, data)
+      history.back()
+      toast.success("Profile updated successfully ")
+      
+    } catch (error) {
+      toast.error(error.message)
+    }
     
     
-      
-      
   
   }
   
@@ -117,7 +120,9 @@ const EditProfilePage = ({ ...user }) =>{
               </label>
             </div>
             <p className=" text-center">Upload profile image
-            <span className="block text-xs text-gray-500">Images of inanimate objects is mostly preferred</span></p>
+              <span className="block text-xs text-gray-500">Images of inanimate objects is mostly preferred</span>
+              <span className="block text-xs text-gray-500">Image size should not be more than 5Mb</span>
+            </p>
             
           </div>
           
@@ -142,7 +147,7 @@ const EditProfilePage = ({ ...user }) =>{
           <input 
             id="date"
             type="date"
-            name="date"
+            
             className="px-3 py-1 bg-gray-400 bg-opacity-50 mb-3 rounded-lg border-2 border-fuchsia-800 outline-none focus:border-fuchsia-600 text-gray-200 text-gray-900 transition duration-200"
             value={dob}
             placeholder="Enter date of birth"

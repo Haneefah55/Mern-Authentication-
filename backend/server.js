@@ -13,9 +13,9 @@ const app = express()
 const port = process.env.PORT || 5000
 
 app.use(cookieParser())
-app.use(express.json())
+app.use(express.json({ limit: "10mb" }))
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }))
 
 const __dirname = path.resolve()
 app.use("/api/auth", authRoutes)
