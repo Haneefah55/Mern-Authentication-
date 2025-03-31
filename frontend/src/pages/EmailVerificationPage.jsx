@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react"
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router'
 import { motion } from "motion/react"
 import { useAuthStore } from "../store/authStore.js"
@@ -21,7 +22,7 @@ const EmailVerificationPage = ({ ...user })=>{
     try{
       await verifyEmail(verificationCode)
       navigate("/")
-      //toast.success("Email verification successful")
+      toast.success("Email verification successful")
     } catch (error) {
       console.log(error)
       

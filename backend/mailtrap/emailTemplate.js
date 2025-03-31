@@ -137,8 +137,8 @@ export const RESET_SUCCESS_TEMP = `
       <p>Hello,</p>
       <p>We are writing to confirm that your password has been successfully reset</p>
       
-      <div style="text-align: center; margin: auto; display: flex; justify-content: center; align-item: center;">
-        <span style="color: #fff; font-size: 25px; font-weight: bold; border-radius: 50%; display: flex; justify-content: center; align-item: center; padding: 20px; background-color: #000080;">
+      <div style="text-align: center; margin: auto; display: flex; justify-content: center; align-items: center;">
+        <span style="color: #fff; width: 10px; height: 10px; font-weight: bold; border-radius: 50%; display: flex; justify-content: center; align-items: center; padding: 15px; background-color: #000080;">
           ✓
         </span>
       </div>

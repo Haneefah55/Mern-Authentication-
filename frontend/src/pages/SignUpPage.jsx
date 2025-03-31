@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import toast from 'react-hot-toast';
 import { useState } from 'react'
 import { Mail, Lock, User, Loader } from "lucide-react"
 import Input from "../components/Input"
@@ -24,6 +25,7 @@ const SignUpPage = () =>{
     try{
       await signup(username, email, password)
       navigate("/verify-email")
+      toast.success("Account created successfully ")
     } catch (error) {
       console.log(error)
     }

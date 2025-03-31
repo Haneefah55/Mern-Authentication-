@@ -1,4 +1,4 @@
-
+import toast from 'react-hot-toast';
 import { motion } from "motion/react"
 import { Loader } from "lucide-react"
 import { useState } from "react"
@@ -28,6 +28,7 @@ const Settings = ({ ...user }) =>{
     
     await deleteUser(userId)
     navigate("/")
+    toast.success("Account deleted successfully ")
     
   }
   

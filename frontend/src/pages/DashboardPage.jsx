@@ -1,4 +1,5 @@
 import logo from '../assets/logoo.png'
+import toast from 'react-hot-toast';
 import profileImage from "../assets/profile.png"
 import { motion } from "motion/react"
 import { LayoutDashboard, CircleArrowRight, NotebookPen, PlaneTakeoff, Settings, LogOut, BellRing, CircleUserRound } from 'lucide-react'
@@ -29,6 +30,7 @@ const DashboardPage = () =>{
     
     await logout()
     navigate("/")
+    toast.success("Logout successfully")
     
   }
   

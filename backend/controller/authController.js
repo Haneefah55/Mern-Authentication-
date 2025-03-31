@@ -41,7 +41,7 @@ export const loginUser = asyncHandler(async (req, res) =>{
       }
     })
   } catch (error) {
-    console.log("Error logging in user", error)
+    
     res.status(400).json({success: false, message: error.message})
     
   }
@@ -105,8 +105,6 @@ export const resendCode = asyncHandler(async (req, res) => {
     
     const user = await User.findOne({ email })
     
-    console.log('user found')
-    
     if(!user){
       res.status(400).json({success: false, message: "User does not exist"})
     }
@@ -126,7 +124,7 @@ export const resendCode = asyncHandler(async (req, res) => {
       }
     })
     
-    console.log("verification code resent successfully")
+  
   } catch (error) {
     res.status(400).json({success: false, message: error.message})
   }
@@ -135,7 +133,7 @@ export const resendCode = asyncHandler(async (req, res) => {
 })
 
 export const logoutUser = async (req, res) =>{
-  console.log("logout button clicked")
+
   res.clearCookie("token", {
     httpOnly: true,
     sameSite: "strict",
@@ -246,7 +244,7 @@ export const resetPassword = asyncHandler(async(req, res) =>{
     await sendResetSuccessEmail(user.email)
     res.status(200).json({success: true, message: "Password reset successfully"})
   } catch (error) {
-    console.log("Error in reset password", error)
+    
     res.status(400).json({success: false, message: error.message})
   }
 })
@@ -264,7 +262,7 @@ export const checkAuth = asyncHandler(async (req, res) =>{
       }
     })
   } catch (error) {
-    console.log("Error in checking authenticity")
+
     res.status(400).json({success: false, message: error.message})
   }
 })
@@ -287,7 +285,7 @@ export const updateUser = asyncHandler(async (req, res) =>{
     user.username = req.body.username
     user.dateOfBirth = req.body.dob
     user.address = req.body.address
-    user.relationship = req.body.statu
+    user.relationship = req.body.relationship
     user.occupation = req.body.occupation
     user.phoneNo = req.body.phoneNo
     user.gender = req.body.gender
@@ -305,11 +303,11 @@ export const updateUser = asyncHandler(async (req, res) =>{
       }
     })
     
-    console.log("user updated successfully", user)
+  
       
   } catch (error) {
     res.status(400).json({success: false, message: error.message})
-    console.log(error)
+
   }
   
 })
@@ -329,7 +327,6 @@ export const deleteUser = asyncHandler(async (req, res) =>{
   
   } catch ( error) {
     res.status(400).json({success: false, message: error.message})
-    console.log(error)
   }
   
   
@@ -367,7 +364,7 @@ export const changePassword = asyncHandler(async (req, res) =>{
   
     
   } catch (error) {
-    console.log("Error in changing password", error)
+  
     res.status(400).json({success: false, message: error.message})
     
   }

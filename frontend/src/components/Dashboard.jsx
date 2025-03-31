@@ -72,7 +72,7 @@ const Dashboard = () =>{
             </h3>
             <div className="text-gray-100 mb-3 text-sm">
               <p className="">No recent destination</p>
-              <Link to="#" className="hover:bg-fuchsia-300" >Explore popular destination
+              <Link to="#" className="hover:bg-fuchsia-300 text-purple-800 text-sm" >Explore popular destination
               </Link>
                 
                 

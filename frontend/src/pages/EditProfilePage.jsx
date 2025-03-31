@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import toast from 'react-hot-toast';
 import { Loader, Camera } from "lucide-react"
 import { motion } from "motion/react"
 import profileImage from "../assets/profile.png"
@@ -26,7 +27,7 @@ const EditProfilePage = ({ ...user }) =>{
   const [phoneNo, setPhoneNo] = useState("")
   const [address, setAddress] = useState("")
   const [occupation, setOccupation] = useState("")
-  const [statu, setStatu] = useState("")
+  const [relationship, setRelationship] = useState("")
   const [gender, setGender] = useState("")
   const [selectedImage, setSelectedImage] = useState(null)
   
@@ -55,7 +56,7 @@ const EditProfilePage = ({ ...user }) =>{
   
     const profilePic = selectedImage
     
-    const data ={ username, dob, phoneNo, address, occupation, statu, gender, profilePic }
+    const data ={ username, dob, phoneNo, address, occupation, relationship, gender, profilePic }
     
     if(!user.isVerified && !isAuthenticated ){
       
@@ -65,6 +66,7 @@ const EditProfilePage = ({ ...user }) =>{
     }
     await updateUser(userId, data)
     history.back()
+    toast.success("Profile updated successfully ")
     
     
       
@@ -152,7 +154,7 @@ const EditProfilePage = ({ ...user }) =>{
             type="text"
             className="w-full px-3 py-1 bg-gray-400 bg-opacity-50 rounded-lg border-2 text-gray-900 border-fuchsia-800 mb-3 outline-none focus:border-fuchsia-600 text-gray-200 placeholder:text-gray-900 transition duration-200"
             value={address}
-            placeholder="Your address"
+            placeholder="Your location"
             onChange={(e) => (setAddress(e.target.value))}
             
           />
@@ -170,9 +172,9 @@ const EditProfilePage = ({ ...user }) =>{
           <input 
             type="text"
             className="w-full px-3 py-1 bg-gray-400 bg-opacity-50 rounded-lg border-2 text-gray-900 border-fuchsia-800 mb-3 outline-none focus:border-fuchsia-600 text-gray-200 placeholder:text-gray-900 transition duration-200"
-            value={statu}
+            value={relationship}
             placeholder="Marital status"
-            onChange={(e) => (setStatu(e.target.value))}
+            onChange={(e) => (setRelationship(e.target.value))}
             
           />
           

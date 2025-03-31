@@ -39,7 +39,7 @@ const Profile = () =>{
   
   return(
     <motion.div 
-      className= " flex flex-col w-[70dwv] items-center p-3 h-full mb-3"
+      className= " flex flex-col w-[70dwv] items-center  h-full mb-3"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -55,7 +55,7 @@ const Profile = () =>{
         
         
         
-        <div className="mt-4 text-purple-950 flex flex-col gap-4">
+        <div className="mt-4 text-purple-950 text-sm flex flex-col gap-4">
           <p>Name: {name} </p>
           <p>Email: {email}</p>
           <p>Age: {age ? age : ""} </p>
