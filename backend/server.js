@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000
 
 app.use(cookieParser())
 app.use(express.json())
-app.use(fileUploader())
+
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 app.use(cors({ origin: "http://localhost:5173", credentials: true }))
 const __dirname = path.resolve()
