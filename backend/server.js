@@ -15,8 +15,8 @@ const port = process.env.PORT || 5000
 app.use(cookieParser())
 app.use(express.json())
 
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
-app.use(cors({ origin: "http://localhost:5173", credentials: true }))
+app.use(bodyParser)
+
 const __dirname = path.resolve()
 
 if(process.env.NODE_ENV === "production"){
