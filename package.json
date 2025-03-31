@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "server": "node backend/server.js",
-    "build": "npm install && npm install --prefix frontend && --production=false && npm run build --prefix frontend"
+    "build": "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix frontend  && npm run build --prefix frontend"
     
   },
   "keywords": [],
